@@ -23,7 +23,7 @@ RUN sed -i 's|^\(session.*required.*pam_limits.so.*\)|#\1|g' /etc/pam.d/runuser
 EXPOSE 80
 
 # Ansibleインベントリファイルコピー
-COPY docker /etc/ansible/
+COPY docker_local /etc/ansible/docker
 RUN chmod -x /etc/ansible/docker
 
 CMD ["/bin/bash"]
