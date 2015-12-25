@@ -17,4 +17,13 @@ RUN rpm -ivh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
 RUN yum install -y ansible
 
 # PAM設定変更
-RUN sed -ri 's|^\(session.*required.*pam_limits.so.*\)|#/1|g' /etc/pam.d/runuser
+RUN sed -i 's|^\(session.*required.*pam_limits.so.*\)|#\1|g' /etc/pam.d/runuser
+
+# ポートフォワーディング設定
+EXPOSE 80
+
+# Ansibleインベントリファイルコピー
+COPY docker /etc/ansible/
+RUN chmod -x /etc/ansible/docker
+
+CMD ["/bin/bash"]
