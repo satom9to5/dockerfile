@@ -14,4 +14,4 @@ ENV GOPATH /go
 ENV PATH ${GOPATH}/bin:/usr/local/go/bin:${PATH}
 
 RUN mkdir -p "${GOPATH}/src" "${GOPATH}/bin"
-WORKDIR ${TOPATH}
+WORKDIR ${GOPATH}
