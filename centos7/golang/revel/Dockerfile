@@ -1,0 +1,11 @@
+FROM supervisor
+
+RUN rm -rf /ansible-playbook 
+RUN git clone https://github.com/satom9to5/ansible-pj-tmpl.git /ansible-playbook 
+WORKDIR /ansible-playbook 
+RUN git submodule init \
+    && git submodule update
+
+ARG GOPATH=/go
+
+RUN ansible-playbook -e gopath=${GOPATH} dockerfile.golang.revel.yml
