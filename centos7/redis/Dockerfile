@@ -6,8 +6,4 @@ WORKDIR /ansible-playbook
 RUN git submodule init \
     && git submodule update
 
-ARG GOPATH=/go
-ENV GOPATH ${GOPATH}
-ENV PATH ${GOPATH}/bin:/usr/local/go/bin:${PATH}
-
-RUN ansible-playbook -e gopath=${GOPATH} dockerfile.golang.revel.yml
+RUN ansible-playbook dockerfile.redis.yml

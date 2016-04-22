@@ -6,8 +6,7 @@ WORKDIR /ansible-playbook
 RUN git submodule init \
     && git submodule update
 
-ARG GOPATH=/go
-ENV GOPATH ${GOPATH}
-ENV PATH ${GOPATH}/bin:/usr/local/go/bin:${PATH}
+ARG PJ_NAME=test_pj
+ARG PJ_UPSTREAM_HOSTNUM=0
 
-RUN ansible-playbook -e gopath=${GOPATH} dockerfile.golang.revel.yml
+RUN ansible-playbook -e pj_name=${PJ_NAME} -e nginx_pj_upstream_hostnum=${PJ_UPSTREAM_HOSTNUM} dockerfile.nginx.develop_golang.yml
