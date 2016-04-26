@@ -7,3 +7,6 @@ RUN git submodule init \
     && git submodule update
 
 RUN ansible-playbook dockerfile.nginx.backend_kibana.yml
+
+WORKDIR /
+EXPOSE 80

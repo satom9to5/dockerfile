@@ -7,3 +7,6 @@ RUN git submodule init \
     && git submodule update
 
 RUN ansible-playbook dockerfile.fluentd.forward.nginx_to_elasticsearch.yml
+
+WORKDIR /
+EXPOSE 24224

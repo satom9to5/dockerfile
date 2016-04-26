@@ -7,3 +7,6 @@ RUN git submodule init \
     && git submodule update
 
 RUN ansible-playbook -e elasticsearch_host=0.0.0.0 dockerfile.elasticsearch.yml
+
+WORKDIR /
+EXPOSE 9200

@@ -10,3 +10,6 @@ ARG PJ_NAME=test_pj
 ARG PJ_UPSTREAM_HOSTNUM=0
 
 RUN ansible-playbook -e pj_name=${PJ_NAME} -e nginx_pj_upstream_hostnum=${PJ_UPSTREAM_HOSTNUM} dockerfile.nginx.develop_golang.yml
+
+WORKDIR /
+EXPOSE 80

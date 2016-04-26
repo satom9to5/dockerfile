@@ -7,3 +7,6 @@ RUN git submodule init \
     && git submodule update
 
 RUN ansible-playbook dockerfile.fluentd.tail.nginx_to_forward.yml
+
+WORKDIR /
+EXPOSE 24224

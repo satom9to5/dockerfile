@@ -11,3 +11,6 @@ ENV GOPATH ${GOPATH}
 ENV PATH ${GOPATH}/bin:/usr/local/go/bin:${PATH}
 
 RUN ansible-playbook -e gopath=${GOPATH} dockerfile.golang.revel.yml
+
+WORKDIR /
+EXPOSE 9000

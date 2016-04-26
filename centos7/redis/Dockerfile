@@ -6,4 +6,8 @@ WORKDIR /ansible-playbook
 RUN git submodule init \
     && git submodule update
 
+VOLUME ["/var/lib/redis"]
 RUN ansible-playbook dockerfile.redis.yml
+
+WORKDIR /
+EXPOSE 6379
