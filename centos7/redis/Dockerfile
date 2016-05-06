@@ -10,4 +10,6 @@ VOLUME ["/var/lib/redis"]
 RUN ansible-playbook dockerfile.redis.yml
 
 WORKDIR /
+COPY entrypoint.sh /usr/local/bin/
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 EXPOSE 6379
