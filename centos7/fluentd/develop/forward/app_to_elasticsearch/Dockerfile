@@ -8,7 +8,7 @@ RUN git submodule init \
 
 ARG APP_NAME=test_app
 
-RUN ansible-playbook -e app_name=${APP_NAME} dockerfile.fluentd.tail.app_to_forward.develop.yml
+RUN ansible-playbook -e app_name=${APP_NAME} dockerfile.fluentd.forward.app_to_elasticsearch.yml
 
 WORKDIR /
 EXPOSE 24224
