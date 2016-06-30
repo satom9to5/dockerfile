@@ -1,24 +1,24 @@
 # nginx
 nginx:
-  image: wordpress_nginx
+  image: satom9to5/wordpress_nginx_auth
   container_name: wordpress_nginx
   links:
     - php_fpm
   ports:
     - "80:80"
   volumes:
-    - /vagrant/wordpress:/usr/share/nginx/wordpress
+    - /var/www/wordpress:/usr/share/nginx/wordpress
+    - /home/centos/.htpasswd:/etc/nginx/.htpasswd
   tty: true
   privileged: true
 
 # php_fpm
 php_fpm:
-  image: wordpress_php
+  image: satom9to5/wordpress_php
   container_name: wordpress_php
   ports:
     - "9000:9000"
   volumes:
-    - /vagrant/wordpress:/usr/share/nginx/wordpress
+    - /var/www/wordpress:/usr/share/nginx/wordpress
   tty: true
   privileged: true
-

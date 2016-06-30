@@ -1,0 +1,39 @@
+# nginx
+nginx:
+  image: satom9to5/wordpress_nginx
+  container_name: wordpress_nginx
+  links:
+    - php_fpm
+  ports:
+    - "80:80"
+  volumes:
+    - /vagrant_shared/wordpress/zoone:/usr/share/nginx/wordpress
+  tty: true
+  privileged: true
+
+# php_fpm
+php_fpm:
+  image: satom9to5/wordpress_php
+  container_name: wordpress_php
+  links:
+    - mysql
+  ports:
+    - "9000:9000"
+  volumes:
+    - /vagrant_shared/wordpress/zoone:/usr/share/nginx/wordpress
+  tty: true
+  privileged: true
+
+# mysql
+mysql:
+  image: mysql
+  container_name: wordpress_mysql
+  ports:
+    - "3306:3306"
+  env_file:
+    - /vagrant_shared/credentials/zoone_local.mysql.env
+  volumes:
+    - /var/local/docker/mysql:/var/lib/mysql
+  tty: true
+  privileged: true
+

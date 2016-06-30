@@ -1,0 +1,23 @@
+# nginx
+nginx:
+  image: satom9to5/wordpress_nginx
+  container_name: wordpress_nginx
+  links:
+    - php_fpm
+  ports:
+    - "80:80"
+  volumes:
+    - /var/www/wordpress:/usr/share/nginx/wordpress
+  tty: true
+  privileged: true
+
+# php_fpm
+php_fpm:
+  image: satom9to5/wordpress_php
+  container_name: wordpress_php
+  ports:
+    - "9000:9000"
+  volumes:
+    - /var/www/wordpress:/usr/share/nginx/wordpress
+  tty: true
+  privileged: true
