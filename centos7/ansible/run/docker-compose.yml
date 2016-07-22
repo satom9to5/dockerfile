@@ -1,0 +1,11 @@
+version: "2"
+
+services:
+  ansible:
+    image: satom9to5/ansible
+    container_name: ansible
+    network_mode: "bridge"
+    volume:
+      - ~/ansible-pj-tmpl:/ansible-playbook
+    tty: true
+    command: /bin/bash

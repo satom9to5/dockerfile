@@ -1,16 +1,15 @@
-FROM centos:7.2.1511
+FROM centos:latest
 
 RUN yum update -y 
 
-# epel
-RUN yum install -y epel-release
+RUN    yum install -y epel-release \
+    && yum install -y which wget curl git unzip gcc make \
+    && yum install -y python python-devel python-pip libffi-devel openssl-devel
 
-RUN yum install -y wget curl git unzip gcc make
+RUN pip install --upgrade pip setuptools
 
 ENV ANSIBLE_VERSION 2.0.1.0
 ENV ANSIBLE_FULLNAME ansible-${ANSIBLE_VERSION}
-
-RUN yum install -y python-pip python-devel
 
 RUN wget http://releases.ansible.com/ansible/${ANSIBLE_FULLNAME}.tar.gz -P /tmp/ \
     && tar xvzf /tmp/${ANSIBLE_FULLNAME}.tar.gz -C /tmp/ \
