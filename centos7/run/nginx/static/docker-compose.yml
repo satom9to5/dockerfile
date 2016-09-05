@@ -1,0 +1,11 @@
+version: "2"
+
+services:
+  nginx:
+    image: satom9to5/nginx_static
+    network_mode: "bridge"
+    ports:
+      - "80:80"
+    volumes:
+      - /var/www/html:/var/www/html
+    tty: true
