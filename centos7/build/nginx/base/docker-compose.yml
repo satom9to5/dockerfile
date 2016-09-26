@@ -1,0 +1,7 @@
+version: "2"
+
+services:
+  ansible:
+    build: 
+      context: .
+    image: nginx_base
