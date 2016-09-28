@@ -1,0 +1,7 @@
+version: "2"
+
+services:
+  apache_php5.6:
+    build: 
+      context: .
+    image: apache_php5.6

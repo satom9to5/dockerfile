@@ -1,0 +1,11 @@
+version: "2"
+
+services:
+  apache_php5.6:
+    image: apache_php5.6
+    network_mode: "bridge"
+    ports:
+      - "80:80"
+    volumes:
+      - /var/www/html:/var/www/html
+    tty: true
