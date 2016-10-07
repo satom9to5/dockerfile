@@ -1,4 +1,4 @@
-FROM ansible
+FROM satom9to5/ansible
 
 RUN git clone https://github.com/satom9to5/ansible-pj-tmpl.git /ansible-playbook 
 WORKDIR /ansible-playbook 
