@@ -6,6 +6,6 @@ services:
     container_name: ansible
     network_mode: "bridge"
     volumes:
-      - ~/ansible-pj-tmpl:/ansible-playbook
+      - ../../ansible-pj-tmpl:/ansible-playbook
     tty: true
     command: /bin/bash

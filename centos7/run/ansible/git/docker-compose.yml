@@ -1,0 +1,8 @@
+# ansible
+ansible:
+  image: satom9to5/ansible_git
+  container_name: ansible_git
+  volumes:
+    - ../../ansible-pj-tmpl:/ansible-playbook
+  tty: true
+  command: /bin/bash
