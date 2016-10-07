@@ -3,6 +3,6 @@ ansible:
   image: satom9to5/nginx_base
   container_name: ansible_nginx
   volumes:
-    - ../../ansible-pj-tmpl:/ansible-playbook
+    - ../../../ansible-pj-tmpl:/ansible-playbook
   tty: true
   command: /bin/bash
