@@ -4,4 +4,4 @@ services:
   ansible:
     build: 
       context: .
-    image: nginx_base
+    image: satom9to5/nginx_base
