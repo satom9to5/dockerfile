@@ -8,4 +8,6 @@ RUN git submodule init \
 
 RUN ansible-playbook dockerfile.ruby.rails.yml -e ruby__install=no
 
-WORKDIR /
+VOLUME /rails
+WORKDIR /rails
+CMD ["rails" "server"]
