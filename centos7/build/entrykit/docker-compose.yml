@@ -1,0 +1,7 @@
+version: "2"
+
+services:
+  entrykit:
+    build: 
+      context: .
+    image: satom9to5/entrykit
