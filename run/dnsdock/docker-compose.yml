@@ -1,0 +1,12 @@
+version: "2"
+
+services:
+  ansible:
+    image: aacebedo/dnsdock:latest-amd64
+    container_name: dnsdock
+    network_mode: "bridge"
+    ports:
+      - "53:53/udp"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    tty: true
