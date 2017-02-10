@@ -1,4 +1,4 @@
-FROM satom9to5/ansible
+FROM satom9to5/entrykit
 
 RUN rm -rf /ansible-playbook 
 RUN git clone https://github.com/satom9to5/ansible-pj-tmpl.git /ansible-playbook 

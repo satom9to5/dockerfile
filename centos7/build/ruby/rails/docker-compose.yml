@@ -1,7 +1,7 @@
 version: "2"
 
 services:
-  ansible:
+  rails:
     build: 
       context: .
     image: satom9to5/rails

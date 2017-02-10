@@ -6,8 +6,10 @@ WORKDIR /ansible-playbook
 RUN git submodule init \
     && git submodule update
 
-RUN ansible-playbook dockerfile.ruby.rails.yml -e ruby__install=no
+RUN ansible-playbook dockerfile.ruby.rails.yml -e ruby__install=no -e ruby_gem_packages_bundler__path=/rails/vendor/bundle
 
-VOLUME /rails
+RUN mkdir -p /rails
+ENV APP_ROOT=/rails
 WORKDIR /rails
+
 CMD ["rails" "server"]
