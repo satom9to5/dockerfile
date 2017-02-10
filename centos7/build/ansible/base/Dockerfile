@@ -1,4 +1,4 @@
-FROM centos:latest
+FROM satom9to5/centos_ja
 
 RUN yum update -y 
 
@@ -8,7 +8,7 @@ RUN    yum install -y epel-release \
 
 RUN pip install --upgrade pip setuptools
 
-ENV ANSIBLE_VERSION 2.1.1.0
+ENV ANSIBLE_VERSION 2.2.1.0
 ENV ANSIBLE_FULLNAME ansible-${ANSIBLE_VERSION}
 
 RUN wget http://releases.ansible.com/ansible/${ANSIBLE_FULLNAME}.tar.gz -P /tmp/ \
