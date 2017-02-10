@@ -4,4 +4,4 @@ services:
   ruby:
     build: 
       context: .
-    image: satom9to5/ruby:2.3.0
+    image: satom9to5/ruby:2.3.3

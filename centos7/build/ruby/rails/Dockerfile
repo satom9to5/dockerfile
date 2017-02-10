@@ -1,4 +1,4 @@
-FROM satom9to5/ruby:2.3.0
+FROM satom9to5/ruby:2.3.3
 
 RUN rm -rf /ansible-playbook 
 RUN git clone https://github.com/satom9to5/ansible-pj-tmpl.git /ansible-playbook 
