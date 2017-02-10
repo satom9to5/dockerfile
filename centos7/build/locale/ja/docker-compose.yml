@@ -1,0 +1,7 @@
+version: "2"
+
+services:
+  centos_ja:
+    build: 
+      context: .
+    image: satom9to5/centos_ja
