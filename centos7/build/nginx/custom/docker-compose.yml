@@ -1,0 +1,8 @@
+version: "2"
+
+services:
+  ansible:
+    build: 
+      context: ../../../.
+      dockerfile: ./build/nginx/custom/Dockerfile
+    image: satom9to5/nginx_custom
