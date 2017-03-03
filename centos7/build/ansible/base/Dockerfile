@@ -4,7 +4,8 @@ RUN yum update -y
 
 RUN    yum install -y epel-release \
     && yum install -y which wget curl git unzip gcc make \
-    && yum install -y python python-devel python-pip libffi-devel openssl-devel
+    && yum install -y python python-devel python-pip libffi-devel openssl-devel \
+    && yum install -y sudo
 
 RUN pip install --upgrade pip setuptools
 
@@ -18,3 +19,7 @@ RUN wget http://releases.ansible.com/ansible/${ANSIBLE_FULLNAME}.tar.gz -P /tmp/
 
 RUN mkdir -p /etc/ansible \
     && echo "localhost" > /etc/ansible/hosts
+
+RUN    useradd ansible \
+    && echo "ansible ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/ansible
+USER ansible
