@@ -1,11 +1,12 @@
 FROM satom9to5/centos_ja
 
-RUN yum update -y 
+RUN yum update -y
 
 RUN    yum install -y epel-release \
     && yum install -y which wget curl git unzip gcc make \
     && yum install -y python python-devel python-pip libffi-devel openssl-devel \
-    && yum install -y sudo
+    && yum install -y sudo \
+    && yum clean all
 
 RUN pip install --upgrade pip setuptools
 
@@ -21,5 +22,7 @@ RUN mkdir -p /etc/ansible \
     && echo "localhost" > /etc/ansible/hosts
 
 RUN    useradd ansible \
-    && echo "ansible ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/ansible
+    && echo "ansible ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/ansible \
+    && git config --global user.email "" \
+    && git config --global user.name "" 
 USER ansible
