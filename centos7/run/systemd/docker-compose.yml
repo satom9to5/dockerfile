@@ -1,0 +1,10 @@
+version: "2"
+
+services:
+  systemd:
+    image: satom9to5/systemd
+    network_mode: "bridge"
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    tty: true
+    privileged: true
