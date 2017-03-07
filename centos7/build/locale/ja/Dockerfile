@@ -1,6 +1,6 @@
 FROM centos:latest
 
-RUN yum update -y 
+RUN yum update -y; yum clean all
 
 RUN localedef -v -c -i ja_JP -f UTF-8 ja_JP.UTF-8; echo "";
 
