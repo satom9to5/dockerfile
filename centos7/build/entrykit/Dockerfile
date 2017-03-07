@@ -1,8 +1,10 @@
 FROM satom9to5/ansible
 
-RUN git clone https://github.com/satom9to5/ansible-pj-tmpl.git /ansible-playbook 
+RUN    sudo mkdir /ansible-playbook \
+    && sudo chown ansible:ansible /ansible-playbook
 WORKDIR /ansible-playbook 
-RUN git submodule init \
+RUN git clone https://github.com/satom9to5/ansible-pj-tmpl.git /ansible-playbook \
+    && git submodule init \
     && git submodule update
 
 RUN ansible-playbook dockerfile.entrykit.yml
