@@ -1,0 +1,7 @@
+version: "2"
+
+services:
+  fluentd:
+    build: 
+      context: .
+    image: satom9to5/fluentd
