@@ -1,0 +1,8 @@
+# ansible
+ansible:
+  image: satom9to5/java
+  container_name: java
+  volumes:
+    - ../../../ansible-pj-tmpl:/ansible-playbook
+  tty: true
+  command: /bin/bash
