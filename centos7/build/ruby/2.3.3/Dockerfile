@@ -6,6 +6,6 @@ WORKDIR /ansible-playbook
 RUN git submodule init \
     && git submodule update
 
-RUN ansible-playbook dockerfile.ruby.yml
+RUN ansible-playbook localhost.ruby.yml
 
 WORKDIR /
