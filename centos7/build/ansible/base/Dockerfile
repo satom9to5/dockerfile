@@ -18,11 +18,14 @@ RUN wget http://releases.ansible.com/ansible/${ANSIBLE_FULLNAME}.tar.gz -P /tmp/
     && pip install /tmp/${ANSIBLE_FULLNAME} \
     && rm -rf /tmp/${ANSIBLE_FULLNAME}
 
+RUN grep "^Defaults.*secure_path" /etc/sudoers | sed "s|$|:/usr/local/bin|g" > /etc/sudoers.d/add_secure_path
+RUN echo "Defaults:%wheel !requiretty" > /etc/sudoers.d/requiretty
+
 RUN mkdir -p /etc/ansible \
     && echo "localhost" > /etc/ansible/hosts
 
-RUN    useradd ansible \
-    && echo "ansible ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/ansible \
+RUN    useradd docker \
+    && echo "docker ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/docker \
     && git config --global user.email "" \
     && git config --global user.name "" 
-USER ansible
+USER docker
