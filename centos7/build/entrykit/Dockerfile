@@ -1,7 +1,7 @@
 FROM satom9to5/ansible
 
 RUN    sudo mkdir /ansible-playbook \
-    && sudo chown ansible:ansible /ansible-playbook
+    && sudo chown docker:docker /ansible-playbook
 WORKDIR /ansible-playbook 
 RUN git clone https://github.com/satom9to5/ansible-pj-tmpl.git /ansible-playbook \
     && git submodule init \
