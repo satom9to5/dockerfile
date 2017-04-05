@@ -1,25 +1,25 @@
 #!/bin/bash
 
-MYSQLD=/sbin/mysqld
+MYSQLD=/usr/sbin/mysqld
 MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-}
 
-DATADIR=$(${MYSQLD} --verbose --help 2> /dev/null | awk '$1 == "datadir" { print $2; exit }')
+DATADIR=$(sudo ${MYSQLD} --verbose --help 2> /dev/null | awk '$1 == "datadir" { print $2; exit }')
 DATADIR=${DATADIR:-/var/lib/mysql/}
 
 if [ ! -d "${DATADIR}/mysql" ]; then
   mkdir -p ${DATADIR}
-  chown -R mysql:mysql ${DATADIR}
+  sudo chown -R mysql:mysql ${DATADIR}
 
   echo 'Initialize database.'
-  /usr/bin/mysql_install_db --datadir=${DATADIR} --rpm --user=mysql --keep-my-cnf
+  sudo ${MYSQLD} --initialize-insecure --datadir=${DATADIR} --user=mysql 
   echo 'Database initialized.'
 fi
 
 echo 'temporary MySQL server start.'
-/usr/sbin/mysqld --skip-networking --user=mysql &
+sudo ${MYSQLD} --skip-networking --user=mysql &
 pid="$!"
 
-mysql_command="/usr/bin/mysql --protocol=socket -uroot"
+mysql_command="/usr/bin/mysql -uroot --protocol=socket"
 
 # wait start MySQL process
 for i in {40..0}; do
@@ -45,11 +45,8 @@ if [ -z "${exist_asterisk_root}" -a ! -z "${MYSQL_ROOT_PASSWORD}" ]; then
 MRSQL
 fi
 
-
 echo 'temporary MySQL server stop.'
-if ! kill -s TERM "${pid}" || ! wait "${pid}"; then
+if ! sudo kill -s TERM "${pid}" || ! wait "${pid}"; then
   echo >&2 'MySQL init failed.'
   exit 1
 fi
-
-/usr/bin/supervisord -n 
