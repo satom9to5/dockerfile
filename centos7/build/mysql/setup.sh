@@ -6,9 +6,10 @@ MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-}
 DATADIR=$(sudo ${MYSQLD} --verbose --help 2> /dev/null | awk '$1 == "datadir" { print $2; exit }')
 DATADIR=${DATADIR:-/var/lib/mysql/}
 
+sudo chown -R mysql:mysql ${DATADIR}
 if [ ! -d "${DATADIR}/mysql" ]; then
   mkdir -p ${DATADIR}
-  sudo chown -R mysql:mysql ${DATADIR}
+  sudo chown mysql:mysql ${DATADIR}/mysql
 
   echo 'Initialize database.'
   sudo ${MYSQLD} --initialize-insecure --datadir=${DATADIR} --user=mysql 
