@@ -1,16 +1,15 @@
 FROM satom9to5/centos_ja
 
-RUN yum update -y
-
-RUN    yum install -y epel-release \
-    && yum install -y which wget curl git unzip gcc make \
+RUN    yum update -y \
+    && yum install -y epel-release \
+                      which wget curl git unzip gcc make \
+                      sudo \
     && yum install -y python python-devel python-pip libffi-devel openssl-devel \
-    && yum install -y sudo \
     && yum clean all
 
 RUN pip install --upgrade pip setuptools
 
-ENV ANSIBLE_VERSION 2.2.1.0
+ENV ANSIBLE_VERSION 2.3.1.0
 ENV ANSIBLE_FULLNAME ansible-${ANSIBLE_VERSION}
 
 RUN wget http://releases.ansible.com/ansible/${ANSIBLE_FULLNAME}.tar.gz -P /tmp/ \
