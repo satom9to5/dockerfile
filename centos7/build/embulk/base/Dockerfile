@@ -5,4 +5,4 @@ RUN    git pull origin master \
     && git submodule init \
     && git submodule update
 
-RUN ansible-playbook localhost.embulk.yml
+RUN ansible-playbook localhost.embulk.install.yml
