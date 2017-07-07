@@ -1,0 +1,7 @@
+version: "2"
+
+services:
+  mysql-volume:
+    build: 
+      context: .
+    image: satom9to5/mysql-volume

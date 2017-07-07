@@ -1,0 +1,7 @@
+version: "2"
+
+services:
+  mssql-volume:
+    build: 
+      context: .
+    image: satom9to5/mssql-volume
