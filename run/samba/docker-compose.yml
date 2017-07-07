@@ -1,0 +1,18 @@
+version: "2"
+
+services:
+  samba:
+    image: dperson/samba
+    container_name: samba
+    network_mode: "bridge"
+    ports:
+      - "445:445"
+    volumes:
+      - /home/vagrant/samba:/mnt/pub
+    entrypoint:
+      - samba.sh
+      - "-u"
+      - "samba;sadamatsu"
+      - "-s"
+      - "pub;/mnt/pub;no;no;no;samba"
+    tty: true
