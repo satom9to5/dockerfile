@@ -1,12 +1,11 @@
-FROM supervisor
+FROM satom9to5/entrykit
 
-RUN rm -rf /ansible-playbook 
-RUN git clone https://github.com/satom9to5/ansible-pj-tmpl.git /ansible-playbook 
 WORKDIR /ansible-playbook 
-RUN git submodule init \
+RUN    git pull origin master \
+    && git submodule init \
     && git submodule update
 
-RUN ansible-playbook dockerfile.nginx.base.yml
+RUN ansible-playbook docker.nginx.base.yml
 
 WORKDIR /
 EXPOSE 80
