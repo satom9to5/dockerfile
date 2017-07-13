@@ -10,4 +10,4 @@ RUN ansible-playbook docker.nginx.custom.yml
 WORKDIR /
 EXPOSE 80
 
-CMD ["/usr/bin/supervisord", "-n"]
+CMD ["sudo", "-E", "/usr/bin/supervisord", "-n"]
