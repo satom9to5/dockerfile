@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  chromium:
+    build:
+      context: .
+    image: satom9to5/chromium
+    volumes:
+      - ./work:/chromium
+    tty: true
