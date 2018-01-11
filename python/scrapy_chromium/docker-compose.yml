@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  scrapy_chromium:
+    build:
+      context: .
+    image: satom9to5/scrapy_chromium
+    volumes:
+      - .:/chromium
+    tty: true
